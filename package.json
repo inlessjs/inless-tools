@@ -1,11 +1,13 @@
 {
   "name": "@inless/tools",
-  "version": "0.0.1",
+  "description": "Set of tools for inless projects",
+  "version": "0.0.2",
   "license": "MIT",
   "bin": {
-    "inless-publish": "./bin/publish.js"
+    "inless-install": "./bin/inless-install.js"
   },
   "dependencies": {
-    "shelljs": "^0.7.8"
+    "del": "^3.0.0",
+    "fs-extra": "^5.0.0"
   }
 }
