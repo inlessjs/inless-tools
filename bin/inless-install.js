@@ -1,22 +1,21 @@
 #!/usr/bin/env node
 
-const fs = require('fs-extra');
+const fs = require('fs');
+const fse = require('fs-extra');
 const path = require('path');
-const del = require('del');
+
+const DEFAULT_DIR = 'dist';
 
 const workDir = process.cwd();
-del.sync([
-    `${workDir}/**`,
-    `!${workDir}`,
-    `!${path.join(workDir, 'package.json')}`,
-    `!${path.join(workDir, 'src')}/**`,
-]);
+const pkgFilename = 'package.json';
+const pkg = require(path.join(workDir, pkgFilename));
 
-fs.copy(path.join(workDir, 'src'), workDir, function (err) {
-    if (err) {
-        console.log('[post-install] An error occured while copying the folder.');
-        return console.error(err);
-    }
+const distDirname = (pkg.inless && pkg.inless.dist) || DEFAULT_DIR;
+const files = fs.readdirSync(workDir);
 
-    del.sync([`${workDir}/src/**`]);
+const exclude = [pkgFilename, distDirname, '.git', '.gitignore', 'node_modules', 'yarn.lock'];
+
+files.forEach(file => {
+    if (exclude.indexOf(file) === -1) fse.removeSync(path.join(workDir, file));
 });
+fse.moveSync(path.join(workDir, distDirname), workDir);
