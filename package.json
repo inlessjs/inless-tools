@@ -1,0 +1,11 @@
+{
+  "name": "@inless/tools",
+  "version": "0.0.1",
+  "license": "MIT",
+  "bin": {
+    "inless-publish": "./bin/publish.js"
+  },
+  "dependencies": {
+    "shelljs": "^0.7.8"
+  }
+}
