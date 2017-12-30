@@ -1,7 +1,7 @@
 {
   "name": "@inless/tools",
   "description": "Set of tools for inless projects",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "bin": {
     "inless-install": "./bin/inless-install.js"
