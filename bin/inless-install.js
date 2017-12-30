@@ -13,7 +13,7 @@ const pkg = require(path.join(workDir, pkgFilename));
 const distDirname = (pkg.inless && pkg.inless.dist) || DEFAULT_DIR;
 const files = fs.readdirSync(workDir);
 
-const exclude = [pkgFilename, distDirname, '.git', '.gitignore', 'node_modules', 'yarn.lock'];
+const exclude = [pkgFilename, distDirname, '.git', '.gitignore', 'node_modules', 'yarn.lock', 'package.lock'];
 
 files.forEach(file => {
     if (exclude.indexOf(file) === -1) fse.removeSync(path.join(workDir, file));
