@@ -25,4 +25,5 @@ const install = () => {
     fse.moveSync(path.join(workDir, distDirname), workDir);
 };
 
-if (path.basename(path.dirname(workDir)) === 'node_modules') install();
+const basename = path.basename(path.dirname(workDir))
+if (basename === 'node_modules' || basename === '@inless') install();
